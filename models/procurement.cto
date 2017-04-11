@@ -1,0 +1,33 @@
+namespace ibm.itpeople.procurement
+
+asset SupplierContract identified by PONumber {
+  o String   PONumber
+  o String   SOWNum    
+  --> ContractorInfo ContractorInfo optional
+  --> Supplier   Supplier 
+}
+
+asset ContractorInfo identified by ContractorID {
+  o String ContractorID       
+  o String ContractorName
+}
+
+abstract participant User identified by Email {
+  o String Email 
+}
+
+participant Supplier extends User {
+  o String SupplierID
+  o String SupplierName
+}
+
+transaction UpdateContractorInfo identified by TransactionID {
+  o String TransactionID
+  o String PONumber
+  o ContractorInfo ContractorInfo
+  --> Supplier Supplier
+ 
+}
+
+
+

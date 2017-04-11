@@ -1,0 +1,19 @@
+/**
+ * Sample access control list.
+ */
+
+rule UpdateContracterInfo {
+      description: "A PO Provider can create a Purchase Order"
+      participant: "ibm.itpeople.procurement.SupplierContract"
+      operation: ALL
+      resource: "ibm.itpeople.procurement.SupplierContract"
+      action: ALLOW
+  }
+
+rule Default {
+      description: "Allow all participants access to all resources"
+      participant: "ANY"
+      operation: READ
+      resource: "ibm.itpeople.procurement"
+      action: ALLOW
+}
